@@ -2,6 +2,6 @@
 
 ## TODO
 
-- [ ] Create Sidebar
+- [x] Create Sidebar
 - [ ] Create 5 tabs and routes: main, rfm-updates, all-updates, rfm-suggestions, court-updates
 - [ ] Load rfm-updates data from mongo

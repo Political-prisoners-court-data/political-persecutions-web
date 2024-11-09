@@ -1,13 +1,12 @@
+import { api, HydrateClient } from "~/trpc/server";
+import RfmUpdateEvents from "../_components/rfm-update-events";
 
-import { HydrateClient } from "~/trpc/server";
-
-export default function RfmUpdates() {
+export default async function RfmUpdates() {
+  void api.event.getAll.prefetch();
 
   return (
     <HydrateClient>
-      <div  className="flex p-4">
-        <span>Some rfm updates page content...</span>
-      </div>
+      <RfmUpdateEvents />
     </HydrateClient>
   );
 }

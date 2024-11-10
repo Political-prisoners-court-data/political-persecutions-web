@@ -13,7 +13,7 @@ export const eventRouter = createTRPCRouter({
 
   getAll: publicProcedure.query(async ({ ctx }) => {
     const events = await ctx.db.event.findMany({
-      take:100,
+      // take:100,
       orderBy: [{ date: "desc"}],
     });
 

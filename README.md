@@ -4,4 +4,4 @@
 
 - [x] Create Sidebar
 - [x] Create 5 tabs and routes: main, rfm-updates, all-updates, rfm-suggestions, court-updates
-- [ ] Load rfm-updates data from mongo
+- [x] Load rfm-updates data from mongo

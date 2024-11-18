@@ -14,7 +14,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4
         with: 
-          node-version-file: package.json
+          node-version: 20
       - name: Prepare Prisma Client
         run: npx prisma generate
       - name: Login to Docker Hub

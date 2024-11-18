@@ -23,7 +23,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build docker image
-        run: docker build -t political-persecutions-web .
+        run: docker build -t aleksandrivanov22/political-persecutions-web .
       - name: Publish image to docker hub
         run: docker push aleksandrivanov22/political-persecutions-web:latest
 

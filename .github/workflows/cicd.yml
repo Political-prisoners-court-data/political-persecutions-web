@@ -36,4 +36,4 @@ jobs:
       - name: Delete old container
         run: docker rm -f political-persecutions-web
       - name: Run docker container
-        run: docker run -d -p 3000:3000 --name -e DATABASE_URL=${{ secrets.DATABASE_URL }} --name political-persecutions-web aleksandrivanov22/political-persecutions-web
+        run: docker run -d -p 3000:3000 -e DATABASE_URL=${{ secrets.DATABASE_URL }} --name political-persecutions-web aleksandrivanov22/political-persecutions-web

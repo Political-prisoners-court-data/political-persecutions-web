@@ -1,0 +1,31 @@
+services:
+  db:
+    build:
+      context: ./mongodb
+      dockerfile: Dockerfile
+    image: persecutions-mongodb
+    networks:
+      - default
+    ports:
+      - "27017:27017"
+    container_name: persecutions-mongodb
+  app:
+    platform: "linux/amd64"
+    build:
+      context: ../
+      dockerfile: docker-build/persecutions-web/Dockerfile
+      args:
+        NEXT_PUBLIC_CLIENTVAR: "clientvar"
+    working_dir: /app
+    ports:
+      - "3000:3000"
+    image: persecutions-web
+    container_name: persecutions-web
+    networks:
+      - default
+    environment:
+      - DATABASE_URL=mongodb://app:app@db:27017/eventsDb?authSource=admin
+
+networks:
+  default:
+    name: persecutions-web-db

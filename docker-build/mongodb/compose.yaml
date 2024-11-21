@@ -1,0 +1,14 @@
+services:
+  db:
+    build:
+      dockerfile: Dockerfile
+    image: persecutions-mongodb
+    networks:
+      - default
+    ports:
+      - "27017:27017"
+    container_name: persecutions-mongodb
+networks:
+  default:
+    name: persecutions-mongodb
+

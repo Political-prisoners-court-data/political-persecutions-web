@@ -1,0 +1,31 @@
+services:
+  # Uncomment the following lines for Linux to enable localhost-to-container
+  # proxy and make localhost ports available inside the container.
+  #
+  # Not required for Windows and MacOS, which already have everything necessary
+  # built-in to the Docker Desktop.
+
+  # proxy-relay:
+  #   image: alpine/socat:latest
+  #   container_name: proxy-relay
+  #   network_mode: host
+  #   command: TCP-LISTEN:27017,fork,bind=host.docker.internal TCP-CONNECT:127.0.0.1:27017
+  #   extra_hosts:
+  #     - host.docker.internal:host-gateway
+
+  app:
+    platform: "linux/amd64"
+    build:
+      context: ../../
+      dockerfile: docker-build/persecutions-web/Dockerfile
+      args:
+        NEXT_PUBLIC_CLIENTVAR: "clientvar"
+    working_dir: /app
+    ports:
+      - "3000:3000"
+    image: persecutions-web
+    container_name: persecutions-web
+    extra_hosts:
+      - host.docker.internal:host-gateway    
+    environment:
+      - DATABASE_URL=mongodb://app:app@host.docker.internal:27017/eventsDb?authSource=admin

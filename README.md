@@ -1,6 +1,6 @@
 # Веб-приложение для мониторинга политических преследований в России
-# Web application for monitoring of political persecutions in Russia
-# [English description](#english)
+# Web application for monitoring political persecution in Russia
+# [English Description and Installation](#english)
 
 [![Build and deploy political-persecutions-web](https://github.com/Political-prisoners-court-data/political-persecutions-web/actions/workflows/cicd.yml/badge.svg)](https://github.com/Political-prisoners-court-data/political-persecutions-web/actions/workflows/cicd.yml/badge.svg)
 
@@ -14,9 +14,9 @@ git clone https://github.com/Political-prisoners-court-data/political-persecutio
 
 ## Установка: доступны 3 способа запуска
 
-### Совместный запуск веб-приложения и базы данных MongoDB
+## Совместный запуск веб-приложения и базы данных MongoDB в контейнерах
 #### Для тех, кто хочет увидеть конечный результат проекта в действии.
-##### *(Для сетапов разработчика перейдите к следующим разделам)*
+##### *(Для сетапов разработчика перейдите к [следующим разделам](#development))*
 #### Docker Compose
 1. Чтобы запустить проект, перейдите в корневой каталог репозитория:
 
@@ -45,9 +45,9 @@ cd docker-build/
 ```bash
 docker compose down
 ```
-### Запуск только MongoDB контейнера
+## <a id="development"></a>Запуск MongoDB контейнера и локальной среды веб интерфейса
 
-#### Удобно для веб-разработчиков, чтобы запустить готовый экземпляр MongoDB с тестовыми данными и погрузиться в локальную веб-разработку:
+#### Удобно для веб-разработчиков, чтобы запустить готовый экземпляр MongoDB с тестовыми данными и погрузиться в [локальную веб-разработку](#web-start):
 #### Docker Compose
 1. Перейдите в каталог:
 
@@ -115,7 +115,35 @@ docker rm -f persecutions-mongodb
 docker rmi -f persecutions-mongodb
 ```
 
-### Запустить только контейнер веб-приложений.
+### <a id="web-start"></a>*Запуск локального веб-интерфейса*
+
+##### Проект построен на базе Next.js, кастомные команды сборки и запуска доступны в файле [package.json](package.json) 
+
+Частые команды:
+<li>Запуск локального dev инстанса</li>
+
+```bash
+npm run dev
+```
+<li>Сборка и запуск проекта под prod</li>
+
+```bash
+npm run preview
+```
+
+<li>Сборка</li>
+
+```bash
+npm run build
+```
+
+<li>Запустить последнюю сборку</li>
+
+```bash
+npm run start
+```
+
+## Запустить только контейнер веб-приложений
 
 #### Пригодится для разработчиков баз данных, чтобы запустить веб-приложение из контейнера в качестве витрины и конфигурировать подключаемые узлы MongoDB, указывая локальные или удаленные подключения к базе данных.
 #### Docker Compose
@@ -184,7 +212,8 @@ docker rm -f persecutions-web
 ```bash
 docker rmi -f persecutions-web
 ```
-# <a id="english"></a>Web application for monitoring of political persecution in Russia
+# <a id="english"></a>English Description and Installation
+# Web application for monitoring political persecution in Russia
 
 ## Prerequisites
 
@@ -197,9 +226,9 @@ git clone https://github.com/Political-prisoners-court-data/political-persecutio
 
 ## Installation: 3 ways to run are available
 
-### Run Web application and MongoDB Database together
+## Run Web application and MongoDB Database together
 #### For those who want to see final result of the project in action.
-##### *(For developer setups go to the next sections)*
+##### *(For developer setups go to the [next sections](#development-eng))*
 #### Docker Compose
 1. To start up the project, go to the root directory of the repository:
 
@@ -228,9 +257,9 @@ cd docker-build/
 ```bash
 docker compose down
 ```
-### Run only MongoDB container
+## <a id="development-eng"></a>Run MongoDB container and local dev environment
 
-#### Mainly for Web developers to start a ready instance of MongoDB with mock data and dive into local web development:
+#### Mainly for Web developers to start a ready instance of MongoDB with mock data and dive into [local web development](#web-start-eng):
 #### Docker Compose
 1. Switch to directory:
 
@@ -298,7 +327,36 @@ docker rm -f persecutions-mongodb
 docker rmi -f persecutions-mongodb
 ```
 
-### Run only Web application container.
+
+### <a id="web-start-eng"></a>*Local web interface run*
+
+##### Project is built on Next.js, custom build and run commands are available in [package.json](package.json)
+
+Frequent commands:
+<li>Run local dev instance</li>
+
+```bash
+npm run dev
+```
+<li>Build and run project in a production mode</li>
+
+```bash
+npm run preview
+```
+
+<li>Build</li>
+
+```bash
+npm run build
+```
+
+<li>Run last build</li>
+
+```bash
+npm run start
+```
+
+## Run only Web application container
 
 #### Mainly for DB developers to showcase web app from container and be flexible in specifying MongoDB instance to work with. This way we are specifying local or remote database connection (for managed or self-hosted MongoDB).
 #### Docker Compose

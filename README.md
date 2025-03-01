@@ -34,7 +34,7 @@ docker compose up --build --detach
 
 4. Запустится веб-приложение и база данных в двух отдельных контейнерах и откроются порт 3000 для веб-приложения и порт 27017 для MongoDB для localhost
 
-5. Веб-приложение доступно по адресу http://localhost:3000
+5. Веб-приложение доступно по адресу http://localhost:3000/rfm-updates
 
 ##### Чтобы остановить и удалить:
 
@@ -162,7 +162,7 @@ cd docker-build/persecutions-web/
 docker compose up --build --detach
 ```
 
-3. Веб запущен и работает по адресу http://localhost:3000
+3. Веб запущен и работает по адресу http://localhost:3000/rfm-updates
 
 #### Альтернативный способ - Docker
 
@@ -189,7 +189,7 @@ docker run -d \
 persecutions-web
 ```
 
-4. Веб-приложение доступно по адресу http://localhost:3000
+4. Веб-приложение доступно по адресу http://localhost:3000/rfm-updates
 
 #### Удалить контейнер веб-приложения:
 
@@ -246,7 +246,7 @@ docker compose up --build --detach
 
 4. It will start web application and database together in two separate containers and will expose port 3000 for web application and port 27017 for MongoDB to localhost
 
-5. Web application is available at http://localhost:3000
+5. Web application is available at http://localhost:3000/rfm-updates
 
 ##### To stop and delete:
 
@@ -375,7 +375,7 @@ cd docker-build/persecutions-web/
 docker compose up --build --detach
 ```
 
-3. Web is up and running at http://localhost:3000
+3. Web is up and running at http://localhost:3000/rfm-updates
 
 #### Alternative run option - Docker
 
@@ -402,7 +402,7 @@ docker run -d \
     persecutions-web
 ```
 
-4. Web application is available at http://localhost:3000
+4. Web application is available at http://localhost:3000/rfm-updates
 
 #### Delete Web App standalone:
 

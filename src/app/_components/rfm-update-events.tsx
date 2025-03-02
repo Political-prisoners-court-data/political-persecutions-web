@@ -64,12 +64,13 @@ function getEventInfo(event: Event): string {
     .concat(event.isTerr ? "Терроризм" : "Экстремизм")
     .concat("; ")
     .concat(
-      event.birthDate.toLocaleDateString("ru-RU", {
+      event.birthDate ? event.birthDate.toLocaleDateString("ru-RU", {
         day: "numeric",
         month: "numeric",
         year: "numeric",
-      }),
+      }) : "",
     );
+
   if (event.address || event.newAddress) {
     info = info.concat("; ").concat(event.address! || event.newAddress!);
   }
@@ -96,6 +97,25 @@ function getEventInfo(event: Event): string {
   if (event.action === "changed") {
     info = info.concat(" ").concat("Изменения: ");
 
+    if (
+        (event.oldIsTerr !== undefined || event.newIsTerr !== undefined) &&
+        event.oldIsTerr !== event.newIsTerr
+    ) {
+      info = info.concat("Терроризм/Экстремизм - ");
+      if (event.oldIsTerr !== undefined) {
+        info = info
+            .concat("Старый: ")
+            .concat(event.oldIsTerr ? "Терроризм" : "Экстремизм")
+            .concat("; ");
+      }
+      if (event.newIsTerr !== undefined) {
+        info = info
+            .concat("Новый: ")
+            .concat(event.newIsTerr ? "Терроризм" : "Экстремизм")
+            .concat("; ");
+      }
+    }
+
     if (event.oldAliases.length > 0 || event.newAliases.length > 0) {
       info = info.concat("Псевдонимы - ");
       if (event.oldAliases.length > 0 && !arraysAreEqual(event.oldAliases, event.newAliases)) {
@@ -113,21 +133,29 @@ function getEventInfo(event: Event): string {
     }
 
     if (
-      (event.oldIsTerr !== undefined || event.newIsTerr !== undefined) &&
-      event.oldIsTerr !== event.newIsTerr
+        (event.oldBirthDate || event.newBirthDate) &&
+        event.oldBirthDate !== event.newBirthDate
     ) {
-      info = info.concat("Терроризм/Экстремизм - ");
-      if (event.oldIsTerr !== undefined) {
+      info = info.concat("Дата рождения - ");
+      if (event.oldBirthDate) {
         info = info
-          .concat("Старый: ")
-          .concat(event.oldIsTerr ? "Терроризм" : "Экстремизм")
-          .concat("; ");
+            .concat("Старая: ")
+            .concat(event.oldBirthDate.toLocaleDateString("ru-RU", {
+              day: "numeric",
+              month: "numeric",
+              year: "numeric",
+            }))
+            .concat("; ");
       }
-      if (event.newIsTerr !== undefined) {
+      if (event.newBirthDate) {
         info = info
-          .concat("Новый: ")
-          .concat(event.newIsTerr ? "Терроризм" : "Экстремизм")
-          .concat("; ");
+            .concat("Новая: ")
+            .concat(event.newBirthDate.toLocaleDateString("ru-RU", {
+              day: "numeric",
+              month: "numeric",
+              year: "numeric",
+            }))
+            .concat("; ");
       }
     }
 
@@ -143,6 +171,7 @@ function getEventInfo(event: Event): string {
   }
   return info;
 }
+
 function arraysAreEqual(arr1: string[], arr2: string[]): boolean {
   if (arr1 === arr2) {
     return true;

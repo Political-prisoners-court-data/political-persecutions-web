@@ -9,6 +9,10 @@ db.createUser(
             {
                 role: 'dbOwner',
                 db: 'eventsDb'
+            },
+            {
+                role: 'dbOwner',
+                db: 'rfmDb'
             } ]
 } );
 

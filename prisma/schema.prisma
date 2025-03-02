@@ -5,7 +5,7 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
   binaryTargets = ["debian-openssl-3.0.x", "native"]
 }
 
@@ -17,21 +17,23 @@ datasource db {
 model Event {
   id String @id @default(auto()) @map("_id") @db.ObjectId
 
-  fullName  String
-  birthDate DateTime
-  action    String
-  date      DateTime
+  fullName String
+  action   String
+  date     DateTime
 
-  aliases String[]
-  isTerr  Boolean?
-  address String?
+  isTerr    Boolean?
+  aliases   String[]
+  birthDate DateTime?
+  address   String?
 
-  oldAliases String[]
-  newAliases String[]
-  oldIsTerr  Boolean?
-  newIsTerr  Boolean?
-  oldAddress String?
-  newAddress String?
+  oldIsTerr    Boolean?
+  newIsTerr    Boolean?
+  oldBirthDate DateTime?
+  newBirthDate DateTime?
+  oldAliases   String[]
+  newAliases   String[]
+  oldAddress   String?
+  newAddress   String?
 
-  @@map("events")  
+  @@map("events")
 }
